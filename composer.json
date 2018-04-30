@@ -1,0 +1,21 @@
+{
+    "name": "anandsiddharth/laravel-passport-socialite",
+    "description": "The missing laravel passport feature for social authentication",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anand Siddharth",
+            "email": "anandsiddharth21@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/passport": "^5.0",
+        "laravel/socialite": "^3.0",
+        "anandsiddharth/league-oauth2-server" : "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Anand\\Laravel\\PassportSocialite\\": "src/"
+        }
+    }
+}
