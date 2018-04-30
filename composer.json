@@ -11,7 +11,7 @@
     "require": {
         "laravel/passport": "^5.0",
         "laravel/socialite": "^3.0",
-        "anandsiddharth/league-oauth2-server" : "^1.0"
+        "anandsiddharth/league-oauth2-social" : "^1.0"
     },
     "autoload": {
         "psr-4": {
