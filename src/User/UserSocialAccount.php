@@ -17,5 +17,5 @@ interface UserSocialAccount {
      * @param string $provider Provider name as requested from oauth e.g. facebook
      * @param string $id Id used by provider
      */
-    public function getUserFromProvider($provider, $id); 
+    public static function getUserFromProvider($provider, $id); 
 }
