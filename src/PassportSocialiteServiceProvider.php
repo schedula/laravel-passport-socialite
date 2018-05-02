@@ -19,6 +19,11 @@ class PassportSocialiteServiceProvider extends ServiceProvider {
      * @return Anand\League\OAuth2\Server\Grant\SocialGrant
      */
     public function makeSocialGrant() {
-
+        $grant = new SocialGrant(
+            $this->app->make(Bridge\UserSocialRepository::class),
+            $this->app->make(RefreshTokenRepository::class)
+        );
+        $grant->setRefreshTokenTTL(Passport::refreshTokensExpireIn());
+        return $grant;        
     }
 }
