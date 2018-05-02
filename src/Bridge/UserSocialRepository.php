@@ -30,9 +30,9 @@ class UserSocialRepository implements UserSocialRepositoryInterface {
      /**
      * {@inheritdoc}
      */
-    public function getUserFromSocialProvider($accessToken, $provider, $grantType, ClientEntityInterface $clientEntity){
+    public function getUserFromSocialProvider($accessToken, $socialProvider, $grantType, ClientEntityInterface $clientEntity){
         try {
-            $socialite = Socialite::with($provider);
+            $socialite = Socialite::with($socialProvider);
             $socialUser = $socialite->userFromToken($accessToken);
 
             $provider = config('auth.guards.api.provider');
@@ -40,7 +40,7 @@ class UserSocialRepository implements UserSocialRepositoryInterface {
                 throw OAuthServerException::serverError('Unable to determine authentication model from configuration.');
             }
             if (method_exists($model, 'findForPassportSocialite')) {
-                $user = $model::findForPassportSocialite($provider, $socialUser->getId());
+                $user = $model::findForPassportSocialite($socialProvider, $socialUser->getId());
                 if(!$user) {
                     return;
                 }
