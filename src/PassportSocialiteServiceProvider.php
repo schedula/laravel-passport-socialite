@@ -1,5 +1,7 @@
 <?php
 
+namespace Anand\Laravel\PassportSocialite;
+
 use Illuminate\Support\ServiceProvider;
 use Laravel\Passport\Bridge\RefreshTokenRepository;
 use Laravel\Passport\Passport;
