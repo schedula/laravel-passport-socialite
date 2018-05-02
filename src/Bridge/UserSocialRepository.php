@@ -5,9 +5,11 @@ namespace Anand\Laravel\PassportSocialite\Bridge;
 
 use Anand\League\OAuth2\Server\Repositories\UserSocialRepositoryInterface;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
-use  Laravel\Passport\Bridge\User;
+use Laravel\Passport\Bridge\User;
 use Socialite;
 use InvalidArgumentException;
+use RuntimeException;
+use League\OAuth2\Server\Exception\OAuthServerException;
 
 
 class UserSocialRepository implements UserSocialRepositoryInterface {
