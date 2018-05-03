@@ -21,3 +21,28 @@ When composer installs this package successfully, register the   `Anand\Laravel\
 
 **Note: You need to configure third party social provider keys and secret strings as mentioned in laravel socialite documentation https://laravel.com/docs/5.6/socialite#configuration**
 
+## Usage
+
+### Step 1
+
+Implement `UserSocialAccount` on your `User` model and then add method `findForPassportSocialite`.
+`findForPassportSocialite` should accept two arguments i.e. `$provider` and `$id`
+    
+    **$provider - will be the social provider i.e. facebook, google, github etc.**
+    **$id - is the user id as per social provider for example facebook's user id 1234567890**
+
+```
+use Anand\Laravel\PassportSocialite\User\UserSocialAccount;
+class User extends Authenticatable implements UserSocialAccount {
+    
+    public static function findForPassportSocialite($provider,$id) {
+        $account = SocialAccount::where('service', $provider)->where('external_user_id', $id)->first();
+        if($account) {
+            if($account->user){
+                return $account->user;
+            }
+        }
+        return;
+    }
+}
+```
