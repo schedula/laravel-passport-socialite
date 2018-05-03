@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * User social repository
+ *
+ * @author      Anand Siddharth <anandsiddharth21@gmail.com>
+ * @copyright   Copyright (c) Anand Siddharth
+ * @license     http://mit-license.org/
+ *
+ * @link        https://github.com/anandsiddharth/laravel-passport-socialite
+ */
 
 namespace Anand\Laravel\PassportSocialite\Bridge;
 
