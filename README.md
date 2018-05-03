@@ -6,6 +6,7 @@ This package helps integrate social login using laravel's native packages i.e. (
 
 ## Getting Started
 To get started add the following package to your composer.json file using this command.
+
 `composer require anandsiddharth/laravel-paytm-wallet`
 
 ## Configuration
