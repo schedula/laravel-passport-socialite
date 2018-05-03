@@ -7,13 +7,13 @@ This package helps integrate social login using laravel's native packages i.e. (
 ## Getting Started
 To get started add the following package to your composer.json file using this command.
 
-`composer require anandsiddharth/laravel-paytm-wallet`
+`composer require anandsiddharth/laravel-passport-socialite`
 
 ## Configuration
-When composer installs this package successfully, register the   `Anand\Laravel\PassportSocialite\PassportSocialiteServiceProvider::class` in your config/app.php configuration file.
+When composer installs this package successfully, register the   `Anand\Laravel\PassportSocialite\PassportSocialiteServiceProvider::class` in your `config/app.php` configuration file.
 
 
-```
+```php
 'providers' => [
     // Other service providers...
     Anand\Laravel\PassportSocialite\PassportSocialiteServiceProvider::class,
@@ -24,7 +24,7 @@ When composer installs this package successfully, register the   `Anand\Laravel\
 
 ## Usage
 
-### Step 1 - Setting up user model
+### Step 1 - Setting up the User model
 
 Implement `UserSocialAccount` on your `User` model and then add method `findForPassportSocialite`.
 `findForPassportSocialite` should accept two arguments i.e. `$provider` and `$id`
@@ -48,7 +48,7 @@ class User extends Authenticatable implements UserSocialAccount {
     use HasApiTokens, Notifiable;
 
     /**
-    * Find user from social provider's id
+    * Find user using social provider's id
     * 
     * @param string $provider Provider name as requested from oauth e.g. facebook
     * @param string $id User id of social provider
@@ -69,9 +69,9 @@ class User extends Authenticatable implements UserSocialAccount {
 
 ### Step 2 - Getting access token using social provider
 
-I recommend you to not to request for access token from social grant directly from your app since the logic in social login is you need to create account if it doesn't exists or else login if account exists. 
+I recommend you to not to request for access token from social grant directly from your app since the logic / concept of social login is you need to create account if it doesn't exists or else login if exists. 
 
-So here in this case you will making a custom route and a controller that will recieve the Access Token or Authorization Token from your client i.e. Android, iOS etc. application.
+So here in this case we will be making a custom route and a controller that will recieve the Access Token or Authorization Token from your client i.e. Android, iOS etc. application. **Here client fetches access token / authorization token from provider**
 
 Our route here can be something like this:
 
@@ -100,14 +100,21 @@ class SocialLogin extends Controller {
     
 	public function issueToken($provider, $accessToken) {
 		$http = new GuzzleHttp\Client;
-
+		/**
+		* Here we will request our app to generate access token 
+		* and refresh token for the user using its social identity by providing access token 
+		* and provider name of the provider. (I hope its not confusing)
+		* and then it goes through social grant and which fetches providers user id then calls 
+		* findForPassportSocialite from your user model if it returns User object then it generates 
+		* oauth tokens or else will throw error message normally like other oauth requests.
+		*/
 		$http->post('http://your-app.com/oauth/token', [
 		    'form_params' => [
 			'grant_type' => 'social',
 			'client_id' => 'your-client-id', // it should be password grant client
 			'client_secret' => 'client-secret',
 			'accessToken' => $accessToken, // access token from provider
-			'provider' => $provider,
+			'provider' => $provider, // i.e. facebook
 		    ],
 		]);
 		return json_decode((string) $response->getBody(), true);
@@ -121,3 +128,4 @@ class SocialLogin extends Controller {
 
 
 **That's all folks**
+
