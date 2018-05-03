@@ -89,7 +89,7 @@ class SocialLogin extends Controller {
 				
 				// create user account
 			}
-            return response()->json($this->issueToken('facebook', $request->accessToken));
+			return response()->json($this->issueToken('facebook', $request->accessToken));
 		}
 		catch(\Exception $e) {
 			return response()->json([ "error" : $e->getMessage() ]);
