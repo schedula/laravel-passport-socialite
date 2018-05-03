@@ -70,49 +70,47 @@ class User extends Authenticatable implements UserSocialAccount {
 
 I recommend you to not to request for access token from social grant directly from your app since the logic in social login is you need to create account if it doesn't exists or else login if account exists. 
 
-So here in this case you will making a controller that will recieve the Access Token or Authorization Token from your client i.e. Android, iOS etc. application.
+So here in this case you will making a custom route and a controller that will recieve the Access Token or Authorization Token from your client i.e. Android, iOS etc. application.
 
-Here is how we can write controller for that :
+Our route here can be something like this:
+
+`Route::post('/auth/social/facebook', 'SocialLogin@loginFacebook');`
+
+And here is how we can write our controller and its method for that :
 
 ```php
-class SocialLogin extends Controller
-{
-    //
+class SocialLogin extends Controller {
 
 	public function loginFacebook(Request $request) {
 		try {
 
-			$facebook = Socialite::driver('facebook')
-						->userFromToken($request->accessToken);
-			
-			
+			$facebook = Socialite::driver('facebook')->userFromToken($request->accessToken);
 			if(!$exist = SocialAccount::where('provider',  SocialAccount::SERVICE_FACEBOOK)->where('provider_user_id', $facebook->getId())->first()){
 				
 				// create user account
 			}
             return response()->json($this->issueToken('facebook', $request->accessToken));
 		}
-		catch(\Exception $e){
-
+		catch(\Exception $e) {
 			return response()->json([ "error" : $e->getMessage() ]);
 		}
 		
 	}
     
-    public function issueToken($provider, $accessToken) {
-        $http = new GuzzleHttp\Client;
+	public function issueToken($provider, $accessToken) {
+		$http = new GuzzleHttp\Client;
 
-        $http->post('http://your-app.com/oauth/token', [
-            'form_params' => [
-                'grant_type' => 'social',
-                'client_id' => 'your-client-id', // it should be password grant client
-                'client_secret' => 'client-secret',
-                'accessToken' => $accessToken, // access token from provider
-                'provider' => $provider,
-            ],
-        ]);
-        return json_decode((string) $response->getBody(), true);
-    }
+		$http->post('http://your-app.com/oauth/token', [
+		    'form_params' => [
+			'grant_type' => 'social',
+			'client_id' => 'your-client-id', // it should be password grant client
+			'client_secret' => 'client-secret',
+			'accessToken' => $accessToken, // access token from provider
+			'provider' => $provider,
+		    ],
+		]);
+		return json_decode((string) $response->getBody(), true);
+	}
 }
 ```
 
@@ -121,4 +119,4 @@ class SocialLogin extends Controller
 **Note: SocialGrant acts similar to PasswordGrant so make sure you use client id and secret of password grant while making oauth request**
 
 
-##### That's all folks
+**That's all folks**
