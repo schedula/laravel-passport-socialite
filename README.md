@@ -80,6 +80,9 @@ Our route here can be something like this:
 And here is how we can write our controller and its method for that :
 
 ```php
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Route;
 class SocialLogin extends Controller {
 
 	public function loginFacebook(Request $request) {
