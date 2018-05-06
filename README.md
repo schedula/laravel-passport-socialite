@@ -99,7 +99,7 @@ class SocialLogin extends Controller {
 	}
     
 	public function issueToken($provider, $accessToken) {
-		$http = new GuzzleHttp\Client;
+		
 		/**
 		* Here we will request our app to generate access token 
 		* and refresh token for the user using its social identity by providing access token 
@@ -108,15 +108,18 @@ class SocialLogin extends Controller {
 		* findForPassportSocialite from your user model if it returns User object then it generates 
 		* oauth tokens or else will throw error message normally like other oauth requests.
 		*/
-		$http->post('http://your-app.com/oauth/token', [
-		    'form_params' => [
+		$params = [
 			'grant_type' => 'social',
 			'client_id' => 'your-client-id', // it should be password grant client
 			'client_secret' => 'client-secret',
 			'accessToken' => $accessToken, // access token from provider
 			'provider' => $provider, // i.e. facebook
-		    ],
-		]);
+		];
+		$request->request->add($params);
+		
+		$requestToken = Request::create("oauth/token", "POST");
+		$response = Route::dispatch($requestToken);
+		
 		return json_decode((string) $response->getBody(), true);
 	}
 }
