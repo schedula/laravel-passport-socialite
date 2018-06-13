@@ -19,5 +19,12 @@
         "psr-4": {
             "Anand\\Laravel\\PassportSocialite\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Anand\\Laravel\\PassportSocialite\\PassportSocialiteServiceProvider"
+            ]
+        }
     }
 }
