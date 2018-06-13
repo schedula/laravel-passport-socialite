@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "laravel/passport": "^5.0",
+        "laravel/passport": "^5.0 || ^6.0",
         "laravel/socialite": "^3.0",
         "illuminate/support": "^5.0",
         "anandsiddharth/league-oauth2-social" : "^1.0"
@@ -18,6 +18,13 @@
     "autoload": {
         "psr-4": {
             "Anand\\Laravel\\PassportSocialite\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Anand\\Laravel\\PassportSocialite\\PassportSocialiteServiceProvider"
+            ]
         }
     }
 }
