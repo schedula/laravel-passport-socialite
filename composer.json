@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "laravel/passport": "^5.0",
+        "laravel/passport": "^6.0",
         "laravel/socialite": "^3.0",
         "illuminate/support": "^5.0",
         "anandsiddharth/league-oauth2-social" : "^1.0"
