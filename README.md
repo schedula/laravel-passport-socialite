@@ -2,7 +2,7 @@
 The missing social authentication plugin (i.e. SocialGrant) for laravel passport.
 
 ## Description
-This package helps integrate social login using laravel's native packages i.e. (passport and socialite). This package allows social login from the providers that is supported 
+This package helps integrate social login using laravel's native packages i.e. (passport and socialite). This package allows social login from the providers that is supported in laravel/socialite package.
 
 ## Getting Started
 To get started add the following package to your composer.json file using this command.
