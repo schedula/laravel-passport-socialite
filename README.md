@@ -66,6 +66,14 @@ class User extends Authenticatable implements UserSocialAccount {
     }
 }
 ```
+**Note: `SocialAccount` here is a laravel model where I am saving provider and provider_user_id and local database user id. Below is the example of `social_accounts` table**
+
+| id | provider | provider_user_id | user_id | created_at        | updated_at        |
+|----|----------|------------------|---------|-------------------|-------------------|
+| 1  | facebook | XXXXXXXXXXXXXX   | 1       | XX-XX-XX XX:XX:XX | XX-XX-XX XX:XX:XX |
+| 2  | github   | XXXXXXXXXXXXXX   | 2       | XX-XX-XX XX:XX:XX | XX-XX-XX XX:XX:XX |
+| 3  | google   | XXXXXXXXXXXXXX   | 3       | XX-XX-XX XX:XX:XX | XX-XX-XX XX:XX:XX |
+
 
 ### Step 2 - Getting access token using social provider
 
