@@ -101,15 +101,15 @@ class SocialLogin extends Controller {
 				
 				// create user account
 			}
-			return response()->json($this->issueToken('facebook', $request->accessToken));
+			return response()->json($this->issueToken($request, 'facebook', $request->accessToken));
 		}
 		catch(\Exception $e) {
-			return response()->json([ "error" : $e->getMessage() ]);
+			return response()->json([ "error" => $e->getMessage() ]);
 		}
 		
 	}
     
-	public function issueToken($provider, $accessToken) {
+	public function issueToken($request, $provider, $accessToken) {
 		
 		/**
 		* Here we will request our app to generate access token 
