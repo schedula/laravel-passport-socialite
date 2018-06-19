@@ -7,16 +7,16 @@ This package helps integrate social login using laravel's native packages i.e. (
 ## Getting Started
 To get started add the following package to your composer.json file using this command.
 
-`composer require anandsiddharth/laravel-passport-socialite`
+`composer require schedula/laravel-passport-socialite`
 
 ## Configuration
-When composer installs this package successfully, register the   `Anand\Laravel\PassportSocialite\PassportSocialiteServiceProvider::class` in your `config/app.php` configuration file.
+When composer installs this package successfully, register the   `Schedula\Laravel\PassportSocialite\PassportSocialiteServiceProvider::class` in your `config/app.php` configuration file.
 
 
 ```php
 'providers' => [
     // Other service providers...
-    Anand\Laravel\PassportSocialite\PassportSocialiteServiceProvider::class,
+    Schedula\Laravel\PassportSocialite\PassportSocialiteServiceProvider::class,
 ],
 ```
 
@@ -42,7 +42,7 @@ Below is how your `User` model should look like after above implementations.
 ```php
 namespace App;
 
-use Anand\Laravel\PassportSocialite\User\UserSocialAccount;
+use Schedula\Laravel\PassportSocialite\User\UserSocialAccount;
 class User extends Authenticatable implements UserSocialAccount {
     
     use HasApiTokens, Notifiable;
