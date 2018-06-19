@@ -6,12 +6,12 @@
  * @copyright   Copyright (c) Anand Siddharth
  * @license     http://mit-license.org/
  *
- * @link        https://github.com/anandsiddharth/laravel-passport-socialite
+ * @link        https://github.com/schedula/laravel-passport-socialite
  */
 
-namespace Anand\Laravel\PassportSocialite\Bridge;
+namespace Schedula\Laravel\PassportSocialite\Bridge;
 
-use Anand\League\OAuth2\Server\Repositories\UserSocialRepositoryInterface;
+use Schedula\League\OAuth2\Server\Repositories\UserSocialRepositoryInterface;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use Laravel\Passport\Bridge\User;
 use Socialite;

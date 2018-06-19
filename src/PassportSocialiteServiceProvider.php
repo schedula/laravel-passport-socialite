@@ -6,16 +6,16 @@
  * @copyright   Copyright (c) Anand Siddharth
  * @license     http://mit-license.org/
  *
- * @link        https://github.com/anandsiddharth/laravel-passport-socialite
+ * @link        https://github.com/schedula/laravel-passport-socialite
  */
 
-namespace Anand\Laravel\PassportSocialite;
+namespace Schedula\Laravel\PassportSocialite;
 
 use Illuminate\Support\ServiceProvider;
 use Laravel\Passport\Bridge\RefreshTokenRepository;
 use Laravel\Passport\Passport;
 use League\OAuth2\Server\AuthorizationServer;
-use Anand\League\OAuth2\Server\Grant\SocialGrant;
+use Schedula\League\OAuth2\Server\Grant\SocialGrant;
 class PassportSocialiteServiceProvider extends ServiceProvider {
 
     public function register () {
@@ -27,7 +27,7 @@ class PassportSocialiteServiceProvider extends ServiceProvider {
     /**
      * Create and configure Social Grant
      * 
-     * @return Anand\League\OAuth2\Server\Grant\SocialGrant
+     * @return Schedula\League\OAuth2\Server\Grant\SocialGrant
      */
     public function makeSocialGrant() {
         $grant = new SocialGrant(

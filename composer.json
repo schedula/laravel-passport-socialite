@@ -1,5 +1,5 @@
 {
-    "name": "anandsiddharth/laravel-passport-socialite",
+    "name": "schedula/laravel-passport-socialite",
     "description": "The missing laravel passport feature for social authentication",
     "keywords" : [ "laravel", "social-login", "laravel-passport", "passport", "laravel-socialite", "socialite"],
     "license": "MIT",
@@ -13,17 +13,17 @@
         "laravel/passport": "^5.0 || ^6.0",
         "laravel/socialite": "^3.0",
         "illuminate/support": "^5.0",
-        "anandsiddharth/league-oauth2-social" : "^1.0"
+        "schedula/league-oauth2-social" : "^1.0"
     },
     "autoload": {
         "psr-4": {
-            "Anand\\Laravel\\PassportSocialite\\": "src/"
+            "Schedula\\Laravel\\PassportSocialite\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Anand\\Laravel\\PassportSocialite\\PassportSocialiteServiceProvider"
+                "Schedula\\Laravel\\PassportSocialite\\PassportSocialiteServiceProvider"
             ]
         }
     }

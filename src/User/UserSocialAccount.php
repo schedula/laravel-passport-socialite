@@ -6,9 +6,9 @@
  * @copyright   Copyright (c) Anand Siddharth
  * @license     http://mit-license.org/
  *
- * @link        https://github.com/anandsiddharth/laravel-passport-socialite
+ * @link        https://github.com/schedula/laravel-passport-socialite
  */
-namespace Anand\Laravel\PassportSocialite\User;
+namespace Schedula\Laravel\PassportSocialite\User;
 
 interface UserSocialAccount {
     /**
