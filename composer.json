@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "laravel/passport": "^5.0 || ^6.0",
+        "laravel/passport": "^5.0 || ^6.0 || ^7.0",
         "laravel/socialite": "^3.0",
         "illuminate/support": "^5.0",
         "schedula/league-oauth2-social" : "^1.0"
