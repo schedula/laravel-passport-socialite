@@ -131,7 +131,7 @@ class SocialLogin extends Controller {
 		$requestToken = Request::create("oauth/token", "POST");
 		$response = Route::dispatch($requestToken);
 		
-		return json_decode((string) $response->getBody(), true);
+		return json_decode((string) $response->content(), true);
 	}
 }
 ```
