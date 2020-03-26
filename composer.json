@@ -14,7 +14,7 @@
         "laravel/passport": "^5.0 || ^6.0 || ^7.0",
         "laravel/socialite": "^4.0",
         "schedula/league-oauth2-social" : "^1.0",
-        "illuminate/support": "~5.7"
+        "illuminate/support": "~5.7 || ^6.0 || ^7.0"
     },
     "autoload": {
         "psr-4": {
